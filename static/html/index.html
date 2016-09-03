@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Kittur</title>
+
+    <link href='//fonts.googleapis.com/css?family=Raleway:400,300,600' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/skeleton.css">
+    <link rel="stylesheet" href="/css/custom.css">
+
+    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+    <script src="https://checkout.stripe.com/checkout.js"></script>
+    <script type="text/javascript" src="/app.js"></script>
+    <script type="text/javascript" src="/js/net.min.js"></script>
+    <link rel="icon" href="/images/kittur.png">
+</head>
+
+<body>
+    <div class="container">
+        <div class="twelve columns">
+            <img src="/images/kittur.svg" style="padding:3rem 1rem; width:40px;" />
+        </div>
+    </div>
+
+    <!-- hero -->
+    <div id="hero" class="section">
+        <div class="container">
+            <div class="row">
+                <div class="twelve columns">
+                    <img src="http://placekitten.com/200/200" alt="" style="border: 10px solid #f6f6f6;;border-radius:50%; width:100px; height:100px" />
+                    <h5 style="font-weight:500">
+                            You can never have too many.
+                        </h5>
+                    <h6>
+                            An irresponsible amount of Kittens, delivered to your door, daily.
+                        </h6>
+                    <a class="button" onclick="show('#signup'); hide('#hero')">Get Kittens</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- signup -->
+    <div id="signup" class="section" style="display:none">
+        <div class="container">
+            <div class="row">
+                <div class="twelve columns">
+                    <div class="">
+                        <img class="flip-horizontally" src="http://www.tortue.me/emoji/mailbox_with_no_mail.png" width="26" >
+                        <img src="http://www.tortue.me/emoji/cat2.png" width="26">
+                    </div>
+                    Sign up to get furry presents in the mail
+                </div>
+            </div>
+            <div class="row">
+                <div class="twelve columns">
+                    <label for="name">Name</label>
+                    <input id="name" type="text" style="width:300px" placeholder="Alison Hatter">
+                </div>
+                <div class="twelve columns">
+                    <label for="email">Email</label>
+                    <input id="email" type="text" style="width:300px" placeholder="alisonhatter@gmail.com">
+                </div>
+                <div class="twelve columns">
+                    <label for="password">Password</label>
+                    <input id="password" type="password" style="width:300px" placeholder="89rxu43m89ty942cwyr9wc">
+                </div>
+                <a class="button" onclick="signup()">Meow</a>
+                <a href="#" onclick="prefill()">Fill input fields</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- payment -->
+    <div id="payment" class="section" style="display:none;">
+        <div class="container">
+            <div class="row">
+                <div class="twelve columns">
+                    <div class="">
+                        <img src="http://www.tortue.me/emoji/wave.png" width="50">
+                    </div>
+                    Hey <span id="users_name"></span>!
+                    <br><br>
+                    I am so happy to see you want an unfathomable number of helpless Kittens
+                    <br><br>
+                    Click the button below to put in your payment information.
+                    <br><br>
+                </div>
+            </div>
+            <div class="row">
+                <div class="twelve columns">
+                    <div id="buy_kittens" class="button" onclick="stripe()">
+                        Buy Kittens
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- payment -->
+    <div id="thank_you" class="section" style="display:none;">
+        <div class="container">
+            <div class="row">
+                <div class="twelve columns">
+                    <h4>
+                        <div class="">
+                            <img src="http://www.tortue.me/emoji/scream_cat.png" width="50">
+                            Meeow!
+                        </div>
+                        Your kittens are being shoved into cardboard boxes and on their way to your doorstep
+
+
+                    </h4>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

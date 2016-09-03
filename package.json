@@ -1,0 +1,24 @@
+{
+  "name": "yoshikaze",
+  "version": "1.0.0",
+  "description": "example application to test integration flow",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/growsumo/yoshikaze.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/growsumo/yoshikaze/issues"
+  },
+  "homepage": "https://github.com/growsumo/yoshikaze#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "stripe": "^4.10.0"
+  }
+}

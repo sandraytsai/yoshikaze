@@ -1,0 +1,19 @@
+{
+  "name": "yoshikaze",
+  "description": "example application to test integration flow",
+  "main": "index.js",
+  "authors": [
+    "Neil Chudleigh <nchudleigh@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/growsumo/yoshikaze",
+  "moduleType": [],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
