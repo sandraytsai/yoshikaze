@@ -1,7 +1,7 @@
 function init() {
     net = new Net(window.location.origin);
     handler = StripeCheckout.configure({
-        key: 'pk_test_6pRNASCoBOKtIshFeQd4XMUh',
+        key: 'pk_test_TfDf48wVeVgbi9OZVAcviFgZ',
         image: '/images/kittur.svg',
         locale: 'auto',
         token: payment
