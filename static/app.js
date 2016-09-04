@@ -6,32 +6,69 @@ function init() {
         locale: 'auto',
         token: payment
     });
+    hide('#signup', 0);
+    hide('#payment', 0);
+    hide('#thank_you', 0);
 }
 
 window.onload = init;
 
+// state of the application
 state = {
     current_user: {}
 };
 
-function show(elem) {
-    document.querySelector(elem).style.display = 'block';
+function show(id, time) {
+    var elem = document.querySelector(id)
+    time = time ? time : 1000;
+    var p = new Promise(function(resolve, reject) {
+        elem.style.opacity = 0;
+        elem.style.display = 'block';
+        setTimeout(function() {
+            elem.style.opacity = 1;
+        }, 10);
+        setTimeout(function() {
+            resolve();
+        }, time);
+    });
+    return p;
 }
 
-function hide(elem) {
-    document.querySelector(elem).style.display = 'none';
+function hide(id, time) {
+    var elem = document.querySelector(id);
+    time = time ? time : 1000;
+    var p = new Promise(function(resolve, reject) {
+        elem.style.opacity = 0;
+        setTimeout(function() {
+            elem.style.display = 'none';
+            resolve();
+        }, time);
+    });
+    return p;
+}
+
+function get_kittens() {
+    hide('#hero').then(function() {
+        show('#signup');
+    });
 }
 
 function inject(elem, value) {
     document.querySelector(elem).innerHTML = value;
 }
 
-function prefill() {
-    document.querySelector('#name').value = "Alison Hatter";
-    document.querySelector('#email').value = "alisonhatter@gmail.com";
-    document.querySelector('#password').value = "apples";
+function fill(elem, value) {
+    document.querySelector(elem).value = value;
 }
 
+// prefills the signup form
+function prefill() {
+    fill('#name', "Alison Hatter");
+    fill('#email', "alisonhatter@gmail.com");
+    fill('#password', "apples");
+}
+
+// signs up the new user, returns their id
 function signup() {
     var name = document.querySelector('#name').value;
     var email = document.querySelector('#email').value;
@@ -49,9 +86,13 @@ function signup() {
             'name': r.json.name,
             'email': r.json.email
         };
-        hide("#signup");
-        show("#payment");
-        inject("#users_name", state.current_user.name);
+
+        inject("#users_name_profile", state.current_user.name);
+        inject("#users_name_wave", state.current_user.name);
+
+        hide("#signup").then(function() {
+            show("#payment");
+        });
     });
 }
 
@@ -65,9 +106,9 @@ function stripe() {
 }
 
 function payment(token) {
-    hide("#payment");
-    show("#thank_you");
-
+    hide("#payment").then(function() {
+        show("#thank_you");
+    });
     net.post('/payment', {
         token_id: token.id
     });

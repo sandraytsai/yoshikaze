@@ -2,6 +2,9 @@ var express = require('express');
 var fs = require('fs');
 var bparse = require('body-parser');
 var app = express();
+var stripe = require("stripe")(
+    "sk_test_BQokikJOvBiI2HlWgH4olfQ2"
+);
 
 var DATABASE = {
     users: {}
@@ -13,6 +16,7 @@ app.use(bparse.urlencoded({
 }));
 app.use(bparse.json());
 
+// serve index.html
 app.get('/', function(req, res) {
     fs.readFile('./static/html/index.html', function(err, page) {
         res.writeHead(200, {
@@ -23,14 +27,12 @@ app.get('/', function(req, res) {
     });
 });
 
-
+// sign up a new user
 app.post('/signup', function(req, res) {
     // read from body
     var name = req.body.name;
     var email = req.body.email;
     var password = req.body.password;
-
-    // TODO: validate input
 
     // generate id
     var id = "user_" + Math.random().toString(36).replace("0.", "");
@@ -51,12 +53,21 @@ app.post('/signup', function(req, res) {
     }).end();
 });
 
+// make payment
 app.post('/payment', function(req, res) {
+    // get token
     var token_id = req.body.token_id;
-    hide("#payment");
+
+    // create the charge in stripe
+    stripe.charges.create({
+        "source": token_id,
+        "currency": "USD",
+        "amount": 999
+    }, function(err, charge) {
+        console.log(err, charge);
+        res.status(200).send("Successfully charged");
+    });
 });
-
-
 
 app.listen(3000, function() {
     console.log('listening on port 3000');

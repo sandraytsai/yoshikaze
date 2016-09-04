@@ -19,13 +19,16 @@
 
 <body>
     <div class="container">
-        <div class="twelve columns">
+        <div class="eight columns">
             <img src="/images/kittur.svg" style="padding:3rem 1rem; width:40px;" />
+        </div>
+        <div class="four columns" style="padding:3rem 1rem;">
+            <span id="users_name_profile"></span>
         </div>
     </div>
 
     <!-- hero -->
-    <div id="hero" class="section">
+    <div id="hero" class="section fade">
         <div class="container">
             <div class="row">
                 <div class="twelve columns">
@@ -36,14 +39,14 @@
                     <h6>
                             An irresponsible amount of Kittens, delivered to your door, daily.
                         </h6>
-                    <a class="button" onclick="show('#signup'); hide('#hero')">Get Kittens</a>
+                    <a class="button" onclick="get_kittens()">Get Kittens</a>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- signup -->
-    <div id="signup" class="section" style="display:none">
+    <div id="signup" class="section fade hide">
         <div class="container">
             <div class="row">
                 <div class="twelve columns">
@@ -74,14 +77,14 @@
     </div>
 
     <!-- payment -->
-    <div id="payment" class="section" style="display:none;">
+    <div id="payment" class="section fade hide">
         <div class="container">
             <div class="row">
                 <div class="twelve columns">
                     <div class="">
                         <img src="http://www.tortue.me/emoji/wave.png" width="50">
                     </div>
-                    Hey <span id="users_name"></span>!
+                    Hey <span id="users_name_wave"></span>!
                     <br><br>
                     I am so happy to see you want an unfathomable number of helpless Kittens
                     <br><br>
@@ -100,7 +103,7 @@
     </div>
 
     <!-- payment -->
-    <div id="thank_you" class="section" style="display:none;">
+    <div id="thank_you" class="section fade hide">
         <div class="container">
             <div class="row">
                 <div class="twelve columns">
@@ -110,8 +113,6 @@
                             Meeow!
                         </div>
                         Your kittens are being shoved into cardboard boxes and on their way to your doorstep
-
-
                     </h4>
                 </div>
             </div>
