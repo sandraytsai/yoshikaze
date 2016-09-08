@@ -3,7 +3,7 @@ var fs = require('fs');
 var bparse = require('body-parser');
 var app = express();
 var stripe = require("stripe")(
-    "sk_test_q5bPAjsbHWtCCtkpQliot5AW"
+    "sk_test_4Z4XGtOSGXEFVXQ7peLKsI2i"
 );
 
 var DATABASE = {
@@ -60,6 +60,9 @@ app.post('/payment', function(req, res) {
 
     // create the charge in stripe
     stripe.charges.create({
+        "metadata": {
+            "customer_key": req.body.id
+        },
         "source": token_id,
         "currency": "USD",
         "amount": 999

@@ -1,7 +1,7 @@
 function init() {
     net = new Net(window.location.origin);
     handler = StripeCheckout.configure({
-        key: 'pk_test_TfDf48wVeVgbi9OZVAcviFgZ',
+        key: 'pk_test_eq0j7iJ8CLnMvJXEYvZvkgEG',
         image: '/images/kittur.svg',
         locale: 'auto',
         token: payment
@@ -68,6 +68,30 @@ function prefill() {
     fill('#password', "apples");
 }
 
+function sumoSignup(email, name, key) {
+    /*
+    customer_key (string, required)
+    used to uniquely identify your customer
+    */
+    growsumo.data.customer_key = key;
+    /*
+    email (string, required)
+    email of the customer signing up
+    */
+    growsumo.data.email = email;
+    /*
+    name (string, optional)
+    name of the customer signing up
+    */
+    growsumo.data.name = name;
+    /*
+    Note that createSignup is an asynchonous call, and will
+    return immediately and call createSignupHandler when it
+    receives a response from GrowSumo's servers
+    */
+    growsumo.createSignup();
+}
+
 // signs up the new user, returns their id
 function signup() {
     var name = document.querySelector('#name').value;
@@ -81,11 +105,17 @@ function signup() {
     };
 
     net.post('/signup', payload).then(function(r) {
+        var id = r.json.id;
+        var name = r.json.name;
+        var email = r.json.email;
+
         state.current_user = {
-            'id': r.json.id,
-            'name': r.json.name,
-            'email': r.json.email
+            'id': id,
+            'name': name,
+            'email': email
         };
+
+        sumoSignup(email, name, id);
 
         inject("#users_name_profile", state.current_user.name);
         inject("#users_name_wave", state.current_user.name);
@@ -110,6 +140,7 @@ function payment(token) {
         show("#thank_you");
     });
     net.post('/payment', {
+        id: state.current_user.id,
         token_id: token.id
     });
 }
