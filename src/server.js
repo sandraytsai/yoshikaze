@@ -3,7 +3,7 @@ var fs = require('fs');
 var bparse = require('body-parser');
 var app = express();
 var stripe = require("stripe")(
-    "sk_test_q5bPAjsbHWtCCtkpQliot5AW"
+    "sk_test_qd7h93Qls4fUFHzviUgYAIe5"
 );
 
 var DATABASE = {

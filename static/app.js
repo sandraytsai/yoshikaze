@@ -1,7 +1,7 @@
 function init() {
     net = new Net(window.location.origin);
     handler = StripeCheckout.configure({
-        key: 'pk_test_TfDf48wVeVgbi9OZVAcviFgZ',
+        key: 'pk_test_FRqwjjIp5KKHoTjCMMs60Qab',
         image: '/images/kittur.svg',
         locale: 'auto',
         token: payment
@@ -96,6 +96,11 @@ function signup() {
     });
 }
 
+
+/**
+
+
+**/
 function stripe() {
     handler.open({
         name: 'Kittur',
