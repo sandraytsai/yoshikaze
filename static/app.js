@@ -86,6 +86,7 @@ function signup() {
             'name': r.json.name,
             'email': r.json.email
         };
+        growsumoSignup();
 
         inject("#users_name_profile", state.current_user.name);
         inject("#users_name_wave", state.current_user.name);
@@ -94,6 +95,13 @@ function signup() {
             show("#payment");
         });
     });
+}
+
+function growsumoSignup() {
+    growsumo.data.customer_key = state.current_user.id;
+    growsumo.data.name = state.current_user.name;
+    growsumo.data.email = state.current_user.email;
+    growsumo.createSignup();
 }
 
 
