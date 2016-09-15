@@ -57,12 +57,13 @@ app.post('/signup', function(req, res) {
 app.post('/payment', function(req, res) {
     // get token
     var token_id = req.body.token_id;
+    var user_id = req.body.user_id;
 
     // create the charge in stripe
     stripe.charges.create({
         "source": token_id,
         "currency": "USD",
-        "amount": 999
+        "amount": 999,
     }, function(err, charge) {
         console.log(err, charge);
         res.status(200).send("Successfully charged");
