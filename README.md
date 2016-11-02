@@ -1,5 +1,3 @@
-# yoshikaze [Yoshikaze Masatsugu](https://en.wikipedia.org/wiki/Yoshikaze_Masatsugu)
-
 This is a sandbox to test the GrowSumo Techinical Integration Flow
 
 Open your /etc/hosts file and add a line that points kittur.com to localhost
@@ -24,5 +22,9 @@ https://dashboard.stripe.com
 - u: yoshikaze@mailinator.com
 - p: oranges1
 
+Testing CC info:
+- num: 4242 4242 4242 4242
+- exp: 04/20
+- cvc: 333
 
 If you have any questions let me know!
