@@ -22,5 +22,9 @@ https://dashboard.stripe.com
 - u: yoshikaze@mailinator.com
 - p: oranges1
 
+Testing CC info:
+- num: 4242 4242 4242 4242
+- exp: 04/20
+- cvc: 333
 
 If you have any questions let me know!
