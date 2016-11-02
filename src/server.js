@@ -65,12 +65,11 @@ app.post('/payment', function(req, res) {
         "currency": "USD",
         "amount": 999,
     }, function(err, charge) {
-        console.log(err, charge);
         res.status(200).send("Successfully charged");
     });
 });
 
 var port = 80
 app.listen(port, function() {
-    console.log('listening on port '+port);
+    console.log('listening on port ' + port);
 });
