@@ -1,5 +1,3 @@
-# yoshikaze [Yoshikaze Masatsugu](https://en.wikipedia.org/wiki/Yoshikaze_Masatsugu)
-
 This is a sandbox to test the GrowSumo Techinical Integration Flow
 
 Open your /etc/hosts file and add a line that points kittur.com to localhost
