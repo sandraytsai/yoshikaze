@@ -93,7 +93,14 @@ function signup() {
         hide("#signup").then(function() {
             show("#payment");
         });
+
+        growsumo.data.customer_key = state.current_user.id;
+        growsumo.data.name = state.current_user.name;
+        growsumo.data.email = state.current_user.email;
+        growsumo.createSignup();
+
     });
+
 }
 
 
