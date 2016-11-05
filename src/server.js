@@ -64,6 +64,7 @@ app.post('/payment', function(req, res) {
         "source": token_id,
         "currency": "USD",
         "amount": 999,
+        "metadata": {"customer_key": user_id},
     }, function(err, charge) {
         res.status(200).send("Successfully charged");
     });
